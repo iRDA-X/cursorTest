@@ -257,67 +257,48 @@ function showNotification(message, type = 'info') {
 
 // 네비게이션 스크롤 효과
 function setupNavigationScroll() {
-    const desktopNav = document.querySelector('.desktop-nav');
-    const mobileNav = document.querySelector('.mobile-nav');
+    const nav = document.querySelector('nav'); // 실제 네비게이션 요소
     let navShown = false; // 네비게이션이 한 번 나타났는지 추적
     
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const heroSection = document.querySelector('#hero');
-        const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+        const serviceSection = document.querySelector('#service');
+        const serviceTop = serviceSection ? serviceSection.offsetTop : 0;
         
         // service section에 도달했을 때 네비게이션 표시
-        if (scrollTop > heroHeight - 100) {
+        if (scrollTop > serviceTop - 100) {
             if (!navShown) {
                 // 처음 나타날 때만 부드러운 애니메이션 적용
                 navShown = true;
                 
-                // 데스크톱 네비게이션 표시
-                if (desktopNav) {
-                    desktopNav.classList.add('show');
-                }
-                
-                // 모바일 네비게이션 표시
-                if (mobileNav) {
-                    mobileNav.classList.add('show');
+                // 네비게이션 표시
+                if (nav) {
+                    nav.classList.add('show');
                 }
             }
-            // 이미 나타난 상태에서는 계속 유지 (클래스만 유지)
+            // 이미 나타난 상태에서는 계속 유지
         } else {
-            // hero section으로 돌아갔을 때만 숨김
+            // service section 이전으로 돌아갔을 때만 숨김
             if (navShown) {
                 navShown = false;
                 
-                // 데스크톱 네비게이션 숨김
-                if (desktopNav) {
-                    desktopNav.classList.remove('show');
-                }
-                
-                // 모바일 네비게이션 숨김
-                if (mobileNav) {
-                    mobileNav.classList.remove('show');
+                // 네비게이션 숨김
+                if (nav) {
+                    nav.classList.remove('show');
                 }
             }
         }
         
         // 스크롤 위치에 따라 배경 투명도 조정
         if (scrollTop > 50) {
-            if (desktopNav) {
-                desktopNav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                desktopNav.style.backdropFilter = 'blur(10px)';
-            }
-            if (mobileNav) {
-                mobileNav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                mobileNav.style.backdropFilter = 'blur(10px)';
+            if (nav) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
             }
         } else {
-            if (desktopNav) {
-                desktopNav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                desktopNav.style.backdropFilter = 'blur(5px)';
-            }
-            if (mobileNav) {
-                mobileNav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                mobileNav.style.backdropFilter = 'blur(5px)';
+            if (nav) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(5px)';
             }
         }
     });

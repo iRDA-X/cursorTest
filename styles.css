@@ -27,6 +27,21 @@ body {
     padding: 0 1rem;
 }
 
+/* 네비게이션 기본 스타일 */
+nav {
+    transform: translateY(-100%);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 네비게이션이 나타났을 때 */
+nav.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
 /* 데스크톱 네비게이션 */
 .desktop-nav {
     transform: translateY(-100%);
