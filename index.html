@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iRDA-X 서비스 - AI SNS 마케팅의 새로운 기준</title>
+    <meta name="description" content="AI가 만드는 SNS 마케팅의 새로운 기준. 기존 대비 50% 비용으로 200% 성과를 경험하세요.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-primary-dark logo-link" id="desktopLogoLink">iRDA-X</div>
+                
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#service" class="nav-link">서비스 소개</a>
+                    <a href="#features" class="nav-link">핵심 기능</a>
+                    <a href="#pricing" class="nav-link">가격 정책</a>
+                    <a href="#process" class="nav-link">프로세스</a>
+                    <a href="#testimonials" class="nav-link">고객 후기</a>
+                </div>
+                
+                <!-- 데스크톱 상담 신청 버튼 -->
+                <div class="hidden md:block">
+                    <button class="cta-button-small">상담 신청</button>
+                </div>
+                
+                <!-- 모바일 햄버거 버튼 -->
+                <button class="md:hidden hamburger-button" id="hamburgerButton">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+            </div>
+        </div>
+        
+        <!-- 모바일 메뉴 -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <div class="text-2xl font-bold text-primary-dark logo-link" id="mobileLogoLink">iRDA-X</div>
+                    <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+                </div>
+                
+                <!-- 모바일 햄버거 버튼 -->
+                <div class="mobile-hamburger-container">
+                    <button class="mobile-hamburger-button" id="mobileHamburgerButton">
+                        <span class="mobile-hamburger-line"></span>
+                        <span class="mobile-hamburger-line"></span>
+                        <span class="mobile-hamburger-line"></span>
+                    </button>
+                    <span class="mobile-hamburger-text">메뉴</span>
+                </div>
+                
+                <!-- 모바일 네비게이션 -->
+                <nav class="mobile-nav" id="mobileNav">
+                    <a href="#service" class="mobile-nav-link">서비스 소개</a>
+                    <a href="#features" class="mobile-nav-link">핵심 기능</a>
+                    <a href="#pricing" class="mobile-nav-link">가격 정책</a>
+                    <a href="#process" class="mobile-nav-link">프로세스</a>
+                    <a href="#testimonials" class="mobile-nav-link">고객 후기</a>
+                </nav>
+                
+                <!-- 모바일 메뉴 푸터 -->
+                <div class="mobile-menu-footer">
+                    <button class="cta-button-primary w-full">상담 신청</button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="container mx-auto px-4 py-20 md:py-32">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="hero-title">
+                    <span class="typing-text" id="heroTitle1"></span><br>
+                    <span class="typing-text text-accent" id="heroTitle2"></span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="typing-text" id="heroSubtitle1"></span><br>
+                    <span class="typing-text" id="heroSubtitle2"></span>
+                </p>
+                <div class="hero-buttons">
+                    <button class="cta-button-primary">무료 상담 신청하기</button>
+                    <button class="cta-button-secondary">성과 사례 보기</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Introduction Section -->
+    <section id="service" class="section-light">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h2 class="section-title">
+                    iRDA-X 서비스가<br>
+                    <span class="text-primary">특별한 이유</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-card-title">AI 기술</h3>
+                    <p class="service-card-text">
+                        최신 AI 기술로<br>
+                        타겟 솔루션을 정확히 분석하고<br>
+                        최적화된 기능을 자동 생성합니다
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3 class="service-card-title">합리적 가격</h3>
+                    <p class="service-card-text">
+                        착수금 50% 절감<br>
+                        성과 기반 비용 지불로<br>
+                        부담 없이 시작하세요
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-card-title">실시간 리포트</h3>
+                    <p class="service-card-text">
+                        24시간 실시간으로<br>
+                        검증된 성과를 확인하고<br>
+                        즉각적인 전략 수정이 가능합니다
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-dark">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-white">
+                    AI가 해결하는<br>
+                    <span class="text-accent">VISION MACHINE의 모든 것</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">스마트 타겟팅</h3>
+                    <p class="feature-text">
+                        AI가 분석한 고객 데이터로<br>
+                        정확한 타겟 설정
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✍️</div>
+                    <h3 class="feature-title">자동 기능능 생성</h3>
+                    <p class="feature-text">
+                        트렌드 분석 기반<br>
+                        맞춤형 최적화 기능 자동 제작
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔮</div>
+                    <h3 class="feature-title">성과 예측 시스템</h3>
+                    <p class="feature-text">
+                        캠페인 시작 전<br>
+                        예상 성과를 미리 확인
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">리얼타임 최적화</h3>
+                    <p class="feature-text">
+                        실시간 데이터 기반<br>
+                        자동 전략 조정
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section-light">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h2 class="section-title">
+                    투명하고 합리적인<br>
+                    <span class="text-primary">가격 정책</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="pricing-card pricing-card-old">
+                    <h3 class="pricing-card-title">기존 업체</h3>
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <span class="pricing-label">착수금:</span>
+                            <span class="pricing-value">200만원~</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-label">월 관리비:</span>
+                            <span class="pricing-value">100만원~</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-label">성과 보장:</span>
+                            <span class="pricing-value">없음</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-label">리포트:</span>
+                            <span class="pricing-value">월 1회</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pricing-card pricing-card-new">
+                    <h3 class="pricing-card-title">iRDA-X 서비스</h3>
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <span class="pricing-label">착수금:</span>
+                            <span class="pricing-value">100만원~</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-label">월 관리비:</span>
+                            <span class="pricing-value">성과 기반</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-label">성과 보장:</span>
+                            <span class="pricing-value">목표 미달성시 환불</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-label">리포트:</span>
+                            <span class="pricing-value">실시간 대시보드</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <p class="pricing-highlight">
+                    성과가 없으면<br>
+                    <span class="text-accent font-bold">비용도 없습니다</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section-dark">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-white">
+                    간단한 4단계로<br>
+                    <span class="text-accent">시작하는 AI 마케팅</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="process-card">
+                    <div class="process-number">1</div>
+                    <h3 class="process-title">무료 상담</h3>
+                    <p class="process-text">
+                        현재 상황 분석 및<br>
+                        맞춤 전략 제안
+                    </p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">2</div>
+                    <h3 class="process-title">AI 분석</h3>
+                    <p class="process-text">
+                        타겟 고객 분석 및<br>
+                        최적 채널 선정
+                    </p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">3</div>
+                    <h3 class="process-title">캠페인 실행</h3>
+                    <p class="process-text">
+                        AI 기반 콘텐츠 제작 및<br>
+                        자동 운영 시작
+                    </p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">4</div>
+                    <h3 class="process-title">성과 최적화</h3>
+                    <p class="process-text">
+                        실시간 데이터 기반<br>
+                        지속적 개선
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-light">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center mb-16">
+                <h2 class="section-title">
+                    iRDA-X 서비스와 함께<br>
+                    <span class="text-primary">성장한 팩도리 & 연구소들</span>
+                </h2>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "착수금 부담이 적어서 시작했는데<br>
+                        3개월 만에 생상성 향상이 2배 증가했습니다"
+                    </div>
+                    <div class="testimonial-author">
+                        PKG 제조 A사 대표
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="section-accent">
+        <div class="container mx-auto px-4 py-20">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="cta-title">
+                    지금 시작하면<br>
+                    <span class="text-white">첫 달 50% 추가 할인</span>
+                </h2>
+                <p class="cta-subtitle">
+                    AI가 만드는 차별화된 성과,<br>
+                    무료 상담으로 확인하세요
+                </p>
+                <button class="cta-button-large">지금 바로 상담 신청</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="footer-section">
+                    <h3 class="footer-title">iRDA-X 서비스</h3>
+                    <p class="footer-text">AI 기반 SNS 마케팅 전문</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">연락처</h3>
+                    <p class="footer-text">전화: 1588-0000</p>
+                    <p class="footer-text">이메일: infobiz@irda-x.com</p>
+                    <p class="footer-text">카카오톡: @iRDA-X 서비스</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">운영시간</h3>
+                    <p class="footer-text">평일 09:00 - 18:00</p>
+                    <p class="footer-text">주말/공휴일 휴무</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">바로가기</h3>
+                    <div class="footer-links">
+                        <a href="#service" class="footer-link">서비스 소개</a>
+                        <a href="#pricing" class="footer-link">가격 안내</a>
+                        <a href="#" class="footer-link">성공 사례</a>
+                        <a href="#" class="footer-link">자주 묻는 질문</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="terms.html" class="footer-legal-link">이용약관</a>
+                    <span class="footer-legal-separator">|</span>
+                    <a href="privacy.html" class="footer-legal-link">개인정보처리방침</a>
+                </div>
+                <div class="footer-copyright">
+                    © 2026 iRDA-X 서비스, All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 상담 신청 모달 -->
+    <div id="consultationModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">상담 신청</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="consultationForm" class="consultation-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">이름 *</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company" class="form-label">회사명</label>
+                    <input type="text" id="company" name="company" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">이메일 *</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">연락처 *</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" class="form-label">제목 *</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">문의 내용 *</label>
+                    <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget" class="form-label">예산 범위</label>
+                    <select id="budget" name="budget" class="form-select">
+                        <option value="">선택해주세요</option>
+                        <option value="100-300">100만원 ~ 300만원</option>
+                        <option value="300-500">300만원 ~ 500만원</option>
+                        <option value="500-1000">500만원 ~ 1000만원</option>
+                        <option value="1000+">1000만원 이상</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service" class="form-label">관심 서비스</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="sns-marketing"> SNS 마케팅
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="content-creation"> 콘텐츠 제작
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="performance-analysis"> 성과 분석
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="ai-optimization"> AI 최적화
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <span class="checkbox-text">
+                            <a href="privacy.html" target="_blank">개인정보처리방침</a>에 동의합니다. *
+                        </span>
+                    </label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="submit-button">상담 신청하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
