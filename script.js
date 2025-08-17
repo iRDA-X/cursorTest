@@ -469,12 +469,32 @@ function handleConsultationFormSubmission(form) {
         timestamp: new Date().toISOString()
     };
     
-    // 실제 구현에서는 서버로 데이터 전송
-    console.log('상담 신청 데이터:', consultationData);
+    // Formspree로 제출 (FormData 사용)
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', consultationData.name);
+    formDataToSend.append('company', consultationData.company);
+    formDataToSend.append('email', consultationData.email);
+    formDataToSend.append('phone', consultationData.phone);
+    formDataToSend.append('subject', consultationData.subject);
+    formDataToSend.append('message', consultationData.message);
+    formDataToSend.append('budget', consultationData.budget);
+    formDataToSend.append('services', consultationData.services.join(', '));
+    formDataToSend.append('_replyto', 'jongsu@irda-x.com');
+    formDataToSend.append('_subject', `[iRDA-X 상담 신청] ${consultationData.subject}`);
+    formDataToSend.append('_cc', 'jongsu@irda-x.com');
     
-    // 시뮬레이션된 서버 응답 (실제로는 fetch API 사용)
-    setTimeout(() => {
-        // 성공 응답 시뮬레이션
+    fetch(form.action, {
+        method: 'POST',
+        body: formDataToSend
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('상담 신청 전송에 실패했습니다.');
+        }
+        return response.text();
+    })
+    .then(() => {
+        // 성공 응답
         showNotification('상담 신청이 성공적으로 접수되었습니다! 24시간 내에 연락드리겠습니다.', 'success');
         
         // 모달 닫기
@@ -486,8 +506,139 @@ function handleConsultationFormSubmission(form) {
         
         // 폼 초기화
         form.reset();
+    })
+    .catch((error) => {
+        console.error('상담 신청 전송 실패:', error);
+        showNotification('상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.', 'error');
         
-    }, 2000); // 2초 후 성공 응답
+        // 버튼 복원
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+    });
+}
+
+// 상담 신청 이메일 HTML 생성
+function generateConsultationEmailHTML(data) {
+    const servicesText = data.services.length > 0 ? data.services.join(', ') : '선택하지 않음';
+    
+    return `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                .header { background: #1D64F2; color: white; padding: 20px; text-align: center; }
+                .content { padding: 20px; background: #f9f9f9; }
+                .field { margin-bottom: 15px; }
+                .label { font-weight: bold; color: #1243A6; }
+                .value { margin-top: 5px; }
+                .footer { text-align: center; padding: 20px; color: #666; font-size: 14px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>iRDA-X 서비스 상담 신청</h1>
+                    <p>새로운 상담 신청이 접수되었습니다.</p>
+                </div>
+                <div class="content">
+                    <div class="field">
+                        <div class="label">신청자명:</div>
+                        <div class="value">${data.name}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">회사명:</div>
+                        <div class="value">${data.company || '입력하지 않음'}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">이메일:</div>
+                        <div class="value">${data.email}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">연락처:</div>
+                        <div class="value">${data.phone}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">제목:</div>
+                        <div class="value">${data.subject}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">문의 내용:</div>
+                        <div class="value">${data.message.replace(/\n/g, '<br>')}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">예산 범위:</div>
+                        <div class="value">${data.budget || '선택하지 않음'}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">관심 서비스:</div>
+                        <div class="value">${servicesText}</div>
+                    </div>
+                    <div class="field">
+                        <div class="label">신청 시간:</div>
+                        <div class="value">${new Date(data.timestamp).toLocaleString('ko-KR')}</div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <p>이 이메일은 iRDA-X 서비스 웹사이트를 통해 자동으로 발송되었습니다.</p>
+                </div>
+            </div>
+        </body>
+        </html>
+    `;
+}
+
+// 상담 신청 이메일 텍스트 생성
+function generateConsultationEmailText(data) {
+    const servicesText = data.services.length > 0 ? data.services.join(', ') : '선택하지 않음';
+    
+    return `
+iRDA-X 서비스 상담 신청
+
+신청자명: ${data.name}
+회사명: ${data.company || '입력하지 않음'}
+이메일: ${data.email}
+연락처: ${data.phone}
+제목: ${data.subject}
+문의 내용: ${data.message}
+예산 범위: ${data.budget || '선택하지 않음'}
+관심 서비스: ${servicesText}
+신청 시간: ${new Date(data.timestamp).toLocaleString('ko-KR')}
+
+이 메시지는 iRDA-X 서비스 웹사이트를 통해 자동으로 발송되었습니다.
+    `;
+}
+
+// 이메일 전송 함수
+function sendConsultationEmail(emailData, consultationData) {
+    // Formspree를 사용한 이메일 전송 (가장 간단하고 안정적인 방법)
+    return fetch('https://formspree.io/f/xpzgwqzg', { // 실제 Formspree 엔드포인트로 변경 필요
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: consultationData.email,
+            name: consultationData.name,
+            company: consultationData.company,
+            phone: consultationData.phone,
+            subject: consultationData.subject,
+            message: consultationData.message,
+            budget: consultationData.budget,
+            services: consultationData.services.join(', '),
+            _replyto: 'jongsu@irda-x.com', // 받는 사람 이메일
+            _subject: emailData.subject, // 이메일 제목
+            _cc: 'jongsu@irda-x.com' // CC로도 받기
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('이메일 전송에 실패했습니다.');
+        }
+        return response.json();
+    });
 }
 
 // 모달 이벤트 리스너 설정
