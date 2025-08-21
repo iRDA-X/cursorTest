@@ -1,176 +1,229 @@
-# iRDA-X 서비스 - AI SNS 마케팅 랜딩 페이지
+# OpenCV MCP Server
 
-## 프로젝트 개요
+OpenCV 기능을 제공하는 Model Context Protocol (MCP) 서버입니다. 이 서버를 통해 Claude나 다른 AI 도구에서 OpenCV의 강력한 컴퓨터 비전 기능을 직접 활용할 수 있습니다.
 
-iRDA-X 서비스의 AI SNS 마케팅 서비스를 홍보하고 상담 신청을 유도하는 단일 페이지 웹사이트입니다.
+## 🚀 주요 기능
 
-### 주요 특징
+- **Canny Edge Detection**: 이미지에서 가장자리 감지
+- **가우시안 블러**: 이미지 흐림 효과 적용
+- **그레이스케일 변환**: 컬러 이미지를 흑백으로 변환
+- **얼굴 감지**: Haar Cascade를 사용한 얼굴 인식
+- **이미지 리사이징**: 이미지 크기 조정
+- **히스토그램 균등화**: 이미지 대비 개선
 
-- **AI 기반 SNS 마케팅 서비스** 소개
-- **기존 대비 50% 비용 절감** 강조
-- **성과 기반 비용 지불** 시스템
-- **실시간 성과 모니터링** 기능
-- **반응형 디자인** (모바일 최적화)
-- **부드러운 스크롤 애니메이션**
-- **인터섹션 옵저버** 기반 애니메이션
+## 📋 요구사항
 
-## 기술 스택
+- Python 3.8 이상
+- OpenCV
+- Model Context Protocol 라이브러리
 
-- **HTML5** - 시맨틱 마크업
-- **CSS3** - 모던 스타일링 및 애니메이션
-- **Vanilla JavaScript** - 인터랙티브 기능
-- **Tailwind CSS** - 유틸리티 기반 스타일링
-- **Noto Sans KR** - 한글 최적화 폰트
+## 🛠 설치 방법
 
-## 디자인 시스템
+### 1. 저장소 클론 및 의존성 설치
 
-### 색상 팔레트 (UMAUMA Icons 테마)
-
-```css
---primary-dark: #1243A6;    /* 진한 파랑 - 주요 버튼, 헤더 */
---primary: #1D64F2;         /* 밝은 파랑 - 링크, 하이라이트 */
---dark: #011C40;            /* 네이비 - 텍스트, 배경 */
---light: #F2EED8;           /* 크림 - 배경, 카드 */
---accent: #F24822;          /* 오렌지레드 - CTA, 강조 */
-```
-
-### 폰트
-
-- **제목**: Noto Sans KR Bold
-- **본문**: Noto Sans KR Regular
-
-## 페이지 구조
-
-1. **Hero Section** - 메인 타이틀, 서브 타이틀, CTA 버튼
-2. **Service Introduction** - 3가지 핵심 장점 카드
-3. **Features Section** - AI 기능 4가지 소개
-4. **Pricing Section** - 기존 업체 vs iRDA-X 서비스 비교
-5. **Process Section** - 4단계 프로세스 설명
-6. **Testimonials Section** - 고객 후기
-7. **CTA Section** - 최종 상담 유도
-8. **Footer** - 회사 정보 및 링크
-
-## 파일 구조
-
-```
-cursorTest/
-├── index.html          # 메인 HTML 파일
-├── styles.css          # CSS 스타일시트
-├── script.js           # JavaScript 기능
-├── README.md           # 프로젝트 설명서
-└── 웹사이트기획안.markdown  # 기획 문서
-```
-
-## 주요 기능
-
-### 1. 반응형 디자인
-- 모바일 퍼스트 접근법
-- 모든 디바이스에서 최적화된 경험
-- 유연한 그리드 시스템
-
-### 2. 스크롤 애니메이션
-- 인터섹션 옵저버 기반 페이드인 효과
-- 부드러운 스크롤 네비게이션
-- 스크롤 진행률 표시
-
-### 3. 인터랙티브 요소
-- 호버 효과 및 마이크로 인터랙션
-- 버튼 클릭 피드백
-- 알림 시스템
-
-### 4. 성능 최적화
-- 디바운스된 스크롤 이벤트
-- 최적화된 애니메이션
-- 효율적인 DOM 조작
-
-## 설치 및 실행
-
-### 로컬 개발 서버 실행
-
-1. 프로젝트 폴더로 이동:
 ```bash
-cd cursorTest
+# 의존성 패키지 설치
+pip install -r requirements.txt
+
+# 또는 setup.py를 사용하여 설치
+python setup.py install
 ```
 
-2. 로컬 서버 실행 (Python 사용):
-```bash
-# Python 3
-python -m http.server 8000
+### 2. MCP 서버 구성
 
-# Python 2
-python -m SimpleHTTPServer 8000
-```
+Claude Desktop이나 다른 MCP 클라이언트에서 서버를 사용하려면 `config.json` 파일을 MCP 클라이언트 설정에 추가해야 합니다.
 
-3. 브라우저에서 접속:
-```
-http://localhost:8000
-```
+**Claude Desktop의 경우:**
 
-### 정적 호스팅 배포
+1. Claude Desktop 설정 파일을 열어서 다음 내용을 추가합니다:
 
-GitHub Pages, Netlify, Vercel 등 정적 호스팅 서비스에 배포 가능합니다.
-
-## 브라우저 지원
-
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
-
-## 개발 가이드라인
-
-### CSS 작성 규칙
-- CSS 변수 활용
-- 모듈화된 스타일 구조
-- 반응형 미디어 쿼리 사용
-
-### JavaScript 작성 규칙
-- ES6+ 문법 사용
-- 함수형 프로그래밍 접근법
-- 성능 최적화 고려
-
-### 접근성 고려사항
-- 시맨틱 HTML 구조
-- 키보드 네비게이션 지원
-- 스크린 리더 호환성
-
-## 커스터마이징
-
-### 색상 변경
-`styles.css` 파일의 CSS 변수를 수정하여 색상을 변경할 수 있습니다:
-
-```css
-:root {
-    --primary-dark: #your-color;
-    --primary: #your-color;
-    --dark: #your-color;
-    --light: #your-color;
-    --accent: #your-color;
+```json
+{
+  "mcpServers": {
+    "opencv": {
+      "command": "python",
+      "args": ["/workspace/opencv_mcp_server.py"],
+      "env": {
+        "PYTHONPATH": "/workspace"
+      }
+    }
+  }
 }
 ```
 
-### 콘텐츠 수정
-`index.html` 파일에서 텍스트와 이미지를 수정할 수 있습니다.
+2. Claude Desktop을 재시작합니다.
 
-### 기능 추가
-`script.js` 파일에 새로운 JavaScript 기능을 추가할 수 있습니다.
+## 🎯 사용 방법
 
-## 라이선스
+### 직접 실행
 
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
+```bash
+python opencv_mcp_server.py
+```
 
-## 연락처
+### Claude에서 사용
 
-- **회사**: iRDA-X 서비스
-- **전화**: 1588-0000
-- **이메일**: infobiz@irda-x.com
-- **카카오톡**: @iRDA-X 서비스
+OpenCV MCP 서버를 설정한 후, Claude에서 다음과 같이 사용할 수 있습니다:
 
-## 업데이트 로그
+1. **이미지 업로드**: 처리하고 싶은 이미지를 Claude에 업로드합니다.
+2. **OpenCV 도구 호출**: 원하는 OpenCV 기능을 요청합니다.
 
-### v1.0.0 (2026-01-XX)
-- 초기 버전 릴리스
-- 기본 랜딩 페이지 기능 구현
-- 반응형 디자인 적용
-- 스크롤 애니메이션 구현
+예시:
+```
+"이 이미지에 Canny edge detection을 적용해주세요. threshold1은 50, threshold2는 150으로 설정해주세요."
 
+"이미지를 300x300 크기로 리사이징해주세요."
+
+"이미지에서 얼굴을 감지하고 사각형으로 표시해주세요."
+```
+
+## 🧪 테스트
+
+예제 클라이언트를 실행하여 서버 기능을 테스트할 수 있습니다:
+
+```bash
+python example_client.py
+```
+
+이 스크립트는:
+- 테스트용 샘플 이미지들을 생성합니다
+- 각 OpenCV 기능의 사용법을 보여줍니다
+- 실제 서버 연결 시 결과를 확인할 수 있는 준비를 합니다
+
+## 📚 사용 가능한 도구들
+
+### 1. edge_detection
+```json
+{
+  "name": "edge_detection",
+  "parameters": {
+    "image": "base64로 인코딩된 이미지",
+    "threshold1": 100,  // 첫 번째 임계값
+    "threshold2": 200   // 두 번째 임계값
+  }
+}
+```
+
+### 2. blur_image
+```json
+{
+  "name": "blur_image", 
+  "parameters": {
+    "image": "base64로 인코딩된 이미지",
+    "kernel_size": 15  // 블러 커널 크기 (홀수)
+  }
+}
+```
+
+### 3. convert_grayscale
+```json
+{
+  "name": "convert_grayscale",
+  "parameters": {
+    "image": "base64로 인코딩된 이미지"
+  }
+}
+```
+
+### 4. face_detection
+```json
+{
+  "name": "face_detection",
+  "parameters": {
+    "image": "base64로 인코딩된 이미지",
+    "scale_factor": 1.1,  // 스케일 팩터
+    "min_neighbors": 5    // 최소 이웃 개수
+  }
+}
+```
+
+### 5. resize_image
+```json
+{
+  "name": "resize_image",
+  "parameters": {
+    "image": "base64로 인코딩된 이미지",
+    "width": 300,   // 새로운 폭
+    "height": 200   // 새로운 높이
+  }
+}
+```
+
+### 6. histogram_equalization
+```json
+{
+  "name": "histogram_equalization",
+  "parameters": {
+    "image": "base64로 인코딩된 이미지"
+  }
+}
+```
+
+## 🔧 개발 및 확장
+
+새로운 OpenCV 기능을 추가하려면:
+
+1. `opencv_mcp_server.py`에서 `handle_list_tools()` 함수에 새로운 도구를 추가
+2. `handle_call_tool()` 함수에 해당 기능의 구현을 추가
+3. 필요한 경우 `OpenCVProcessor` 클래스에 헬퍼 메소드 추가
+
+### 예시: 새로운 도구 추가
+
+```python
+# handle_list_tools()에 추가
+Tool(
+    name="my_new_tool",
+    description="새로운 OpenCV 기능입니다.",
+    inputSchema={
+        "type": "object",
+        "properties": {
+            "image": {"type": "string", "description": "Base64로 인코딩된 이미지"},
+            "param1": {"type": "number", "description": "매개변수 1"}
+        },
+        "required": ["image"]
+    }
+)
+
+# handle_call_tool()에 구현 추가
+elif name == "my_new_tool":
+    image = processor.base64_to_cv2(arguments["image"])
+    param1 = arguments.get("param1", 0)
+    
+    # OpenCV 처리 로직
+    result = cv2.some_function(image, param1)
+    result_base64 = processor.cv2_to_base64(result)
+    
+    return [TextContent(
+        type="text",
+        text=f"새로운 도구 처리 완료\\n결과 이미지: data:image/png;base64,{result_base64}"
+    )]
+```
+
+## 🛡️ 에러 처리
+
+서버는 다음과 같은 에러 상황을 처리합니다:
+
+- 잘못된 Base64 이미지 데이터
+- OpenCV 처리 중 발생하는 오류
+- 잘못된 매개변수 값
+- 지원되지 않는 이미지 형식
+
+## 📝 라이선스
+
+MIT License
+
+## 🤝 기여하기
+
+1. 이 저장소를 포크합니다
+2. 새로운 기능 브랜치를 생성합니다 (`git checkout -b feature/AmazingFeature`)
+3. 변경사항을 커밋합니다 (`git commit -m 'Add some AmazingFeature'`)
+4. 브랜치에 푸시합니다 (`git push origin feature/AmazingFeature`)
+5. Pull Request를 생성합니다
+
+## 📞 지원
+
+문제가 발생하거나 질문이 있으시면 이슈를 생성해 주세요.
+
+---
+
+**OpenCV MCP Server**로 컴퓨터 비전의 세계를 AI와 함께 탐험해보세요! 🎉
